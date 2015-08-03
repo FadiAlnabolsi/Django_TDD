@@ -42,7 +42,7 @@ class NewVisitorTest(LiveServerTestCase):
 		# "1: Buy peacock feathers" as an item in a to-do list
 		inputbox.send_keys(Keys.ENTER)
 		edith_list_url = self.browser.current_url
-		self.assertRegex(edith_list_url, '/list/.+')
+		self.assertRegex(edith_list_url, '/lists/')
 		self.check_for_row_in_list_table('1: Buy peacock feathers')
 
 		#There is still a text box inviting her to add another item. She
@@ -65,15 +65,15 @@ class NewVisitorTest(LiveServerTestCase):
 
 		#Francis visits the home page. There is no sign of Edith's list
 		self.browser.get(self.live_server_url)
-		page_text = self.browser.find_element_by_tage_name('body').text
-		self.assertNotInt('Buy peacock feathers', page_text)
+		page_text = self.browser.find_element_by_tag_name('body').text
+		self.assertNotIn('Buy peacock feathers', page_text)
 		self.assertNotIn('make a fly', page_text)
 
 		# Francis starts a new list by entering a new item. He
 		# is less interesting than Edith...
 		inputbox = self.browser.find_element_by_id('id_new_item')
 		inputbox.send_keys('Buy Milk')
-		inputbox.send_keys(keys.ENTER)
+		inputbox.send_keys(Keys.ENTER)
 
 		# Francis get shis own unique URL
 		francis_list_url = self.browser.current_url
