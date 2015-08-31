@@ -42,9 +42,26 @@ INSTALLED_APPS = (
 )
 
 AUTH_USER_MODEL = 'accounts.ListUser'
-AUTHENITCATION_BACKENDS = (
-        'accounts.authentication.PersonaAuthenticationBackend'
-    )
+AUTHENTICATION_BACKENDS = (
+    'accounts.authentication.PersonaAuthenticationBackend',
+)
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'level': 'DEBUG',
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console'],
+#         },
+#     },
+#     'root': {'level': 'INFO'},
+# }
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

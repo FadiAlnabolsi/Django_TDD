@@ -11,19 +11,18 @@ class ListUserManager(BaseUserManager):
     def create_superuser(self, email, password):
         self.create_user(email)
 
+
 class ListUser(AbstractBaseUser, PermissionsMixin):
-	email = models.EmailField(primary_key=True)
-	USERNAME_FIELD = 'email'
-	#REQUIRED_FIELDS = ['email', 'height']
+    email = models.EmailField(primary_key=True)
+    USERNAME_FIELD = 'email'
+    #REQUIRED_FIELDS = ['email', 'height']
 
-	objects = ListUserManager()
+    objects = ListUserManager()
 
-	@property
-	def is_staff(self):
-	    return self.email == 'harry.percival@example.com'
-    
-	@property
-	def is_active(self):
-		return True
-    
-	
+    @property
+    def is_staff(self):
+        return self.email == 'harry.percival@example.com'
+
+    @property
+    def is_active(self):
+        return True

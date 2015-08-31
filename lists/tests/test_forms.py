@@ -5,6 +5,7 @@ from lists.forms import (
 	ExistingListItemForm, ItemForm
 	)
 from lists.models import Item, List
+from accounts.models import ListUser
 
 
 class ItemFormTest(TestCase):
